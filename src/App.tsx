@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import Card from './components/Card';
+import axios from 'axios';
+import UserList from './components/UserList';
+import { IUser } from './types/types';
 
 function App() {
+
+  const [userList, setUserList] = useState<IUser[]>([]);
+
+  useEffect(() => {
+    getUsersList();
+  }, []);
+
+  const url = 'https://jsonplaceholder.typicode.com/users';
+
+  const getUsersList = async () => {
+    axios.get<IUser[]>(url)
+      .then((response) => setUserList(response.data))
+      .catch((error) =>  {
+        console.log('Не удалось получить данные с запроса: ', error);
+      })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card 
+        height='200px' 
+        width='200px'
+        onClick={(num) => console.log(num)}
+      >
+        <button>Click</button>
+      </Card>
+      <UserList users={userList}/>
     </div>
   );
 }
