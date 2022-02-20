@@ -6,6 +6,7 @@ import { ITodo, IUser } from './types/types';
 import List from './components/List';
 import User from './components/User';
 import TodoItem from './components/TodoItem';
+import Events from './components/Evetns';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <Events />
       <Card 
         height='200px' 
         width='200px'
