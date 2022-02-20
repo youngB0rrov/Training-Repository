@@ -3,7 +3,7 @@ import { IUser } from "../types/types";
 import User from "./User";
 
 interface UserInterfaceProps {
-    // тип провсов - список пользователей типа IUser
+    // тип пропсов - список пользователей типа IUser
     users: IUser[];
 }
 
