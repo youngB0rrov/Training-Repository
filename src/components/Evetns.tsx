@@ -1,16 +1,19 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useRef, useState } from "react";
 
 const Events: FunctionComponent = () => {
 
     const [value, setValue] = useState<string>('');
     const [isDraged, setIsDraged] = useState<boolean>(false);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     }
 
     const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-        console.log(value);  
+        console.log(inputRef.current?.value);
+        console.log(value);
+        
     }
 
     const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
@@ -33,8 +36,24 @@ const Events: FunctionComponent = () => {
 
     return (
         <div>
-            <input type="text" onChange={changeHandler}/>
-            <button onClick={clickHandler}>Click to show input text</button>
+            <input 
+                type="text" 
+                onChange={changeHandler}
+                placeholder="Управляемый инпут"
+            />
+
+            <input 
+                type="text" 
+                placeholder="Неуправляемый инпут"
+                ref={inputRef}
+            />
+
+            <button 
+                onClick={clickHandler}
+            >
+                Click to show input text
+            </button>
+
             <div>
                 <div 
                     style={{width: 200, height: 200, backgroundColor: 'green', marginBottom: 30}}
