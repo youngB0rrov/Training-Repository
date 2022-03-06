@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+  const buttonStyle = {
+    padding: 15,
+    cursor: 'pointer',
+    backgroundColor: 'orange',
+    color: '#fff',
+    border: 'none',
+    marginRight: '10px',
+    fontSize: 16,
+    borderRadius: 4
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App">\
+      <div className="container" style={{width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div className="cash-info">
+          <h3 className="cash-info-summ" style={{marginBottom: 30}}>
+
+          </h3> 
+          <div className="button-container" style={{display: 'flex', justifyContent: 'center', marginTop: '10%'}}>
+            <button 
+              style={buttonStyle}
+            >
+              Add cash
+            </button>
+            <button 
+              style={buttonStyle}
+            >
+              Get cash
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
